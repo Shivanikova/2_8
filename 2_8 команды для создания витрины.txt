@@ -22,7 +22,7 @@ SELECT DISTINCT shop_name, product_name, SUM(sales_cnt) OVER (PARTITION BY shop_
                             )AS all_shops
                        INNER JOIN plan ON  all_shops.shop_id = plan.shop_id
                        INNER JOIN shops ON all_shops.shop_id = shops.shop_id
-                       INNER JOIN products ON all_shops.shop_id = products.product_id
+                       INNER JOIN products ON all_shops.product_id = products.product_id
                        WHERE month = last_month AND last_month = month_plan 
                        AND shop_product_sales_plan = shop_product_sales_fact
                       ) AS all_shops_plan_fact
